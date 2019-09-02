@@ -1,0 +1,19 @@
+[package]
+name = "cursive-aligned-view"
+version = "0.1.0"
+authors = ["Fin Christensen <christensen.fin@gmail.com>", "Johannes Wünsche <johannes.wuensche97@gmail.com>"]
+edition = "2018"
+description = "A view wrapper for gyscos/cursive views which aligns child views"
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = ["cursive", "tui", "terminal", "align", "view"]
+repository = "https://github.com/deinstapel/cursive-aligned-view"
+documentation = "https://docs.rs/cursive-aligned-view"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cursive = "0.13.0"
+
+[dev-dependencies]
+serde_json = "1.0.40"
