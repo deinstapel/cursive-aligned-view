@@ -34,7 +34,6 @@ fi
                 git init
                 git remote add origin "$repo"
                 git checkout -b gh-pages
-                git branch --set-upstream-to origin gh-pages
             )
         fi
 
@@ -44,12 +43,11 @@ fi
             cd "$tmp_dir" || die "failed to enter temporary directory"
             git add -A
             git commit -m "Travis CI badge deployment"
+            git branch --set-upstream-to origin gh-pages
             git push
         )
 
         result=$?
-        rm -rf "$tmp_dir"
-
         if [ "$result" -eq 0 ] || [ "$try" -ge 5 ]
         then
             break
@@ -57,4 +55,7 @@ fi
 
         try=$((try + 1))
     done
+
+    rm -rf "$tmp_dir"
+
 )
