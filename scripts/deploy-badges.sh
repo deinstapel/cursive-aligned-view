@@ -43,8 +43,7 @@ fi
             cd "$tmp_dir" || die "failed to enter temporary directory"
             git add -A
             git commit -m "Travis CI badge deployment"
-            git branch --set-upstream-to origin gh-pages
-            git push
+            git push origin gh-pages:gh-pages
         )
 
         result=$?
