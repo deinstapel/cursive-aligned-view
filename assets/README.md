@@ -5,7 +5,7 @@
 Inside a `80x24` terminal record it using
 
 ```
-$ cargo build --example simple
+$ cargo build --example dynamic
 $ cd assets
 $ terminalizer record --config ./config.yml demo
 ```

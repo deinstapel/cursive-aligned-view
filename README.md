@@ -26,8 +26,6 @@
 
 ---
 
-> This project is work-in-progress
-
 This project provides an `AlignedView` for [gyscos/cursive](https://github.com/gyscos/cursive) views which makes it possible to align the child view (center, left, right, top, bottom). The `AlignedView` uses the `required_size` reported by the child view and fills the rest of the available space with the views background color.
 
 ## How does it look like? `demo` [![terminalizer](https://img.shields.io/badge/GIF-terminalizer-blueviolet.svg)](https://github.com/faressoft/terminalizer)
@@ -48,7 +46,39 @@ cursive-aligned-view = "^0"
 
 ### Aligning a child view
 
-> TBD
+The easiest way to align a view is via the `Alignable` trait:
+
+```rust
+use cursive_aligned_view::Alignable;
+
+let aligned = child_view.align_center();
+```
+
+This is the preferred way as it is *chainable* and consistent with cursive's `Boxable` and `Identifiable` traits.
+
+As an alternative you can use the `AlignedView` constructors directly:
+
+```rust
+use cursive_aligned_view::AlignedView;
+
+let aligned = AlignedView::center(child_view);
+```
+
+Look into the [documentation](https://docs.rs/cursive-aligned-view) for a detailed explanation on the API.
+
+### Supported Alignments
+
+| Alignment     | Construction method   |
+|---------------|-----------------------|
+| top left      | `align_top_left`      |
+| top center    | `align_top_center`    |
+| top right     | `align_top_right`     |
+| center left   | `align_center_left`   |
+| center        | `align_center`        |
+| center right  | `align_center_right`  |
+| bottom left   | `align_bottom_left`   |
+| bottom center | `align_bottom_center` |
+| bottom right  | `align_bottom_right`  |
 
 ## Troubleshooting
 

@@ -21,4 +21,22 @@ function cargo_e2e(name, custom) {
     };
 }
 
-it('works', () => {});
+it('aligns the child view at top-left',   cargo_e2e('top_left'));
+it('aligns the child view at top-center', cargo_e2e('top_center'));
+it('aligns the child view at top-right',  cargo_e2e('top_right'));
+it('aligns the child view at center-left',  cargo_e2e('center_left'));
+it('aligns the child view at center',       cargo_e2e('center'));
+it('aligns the child view at center-right', cargo_e2e('center_right'));
+it('aligns the child view at bottom-left',   cargo_e2e('bottom_left'));
+it('aligns the child view at bottom-center', cargo_e2e('bottom_center'));
+it('aligns the child view at bottom-right',  cargo_e2e('bottom_right'));
+
+it('aligns the child view at top-left via composition',   cargo_e2e('align_top_left'));
+it('aligns the child view at top-center via composition', cargo_e2e('align_top_center'));
+it('aligns the child view at top-right via composition',  cargo_e2e('align_top_right'));
+it('aligns the child view at center-left via composition',  cargo_e2e('align_center_left'));
+it('aligns the child view at center via composition',       cargo_e2e('align_center'));
+it('aligns the child view at center-right via composition', cargo_e2e('align_center_right'));
+it('aligns the child view at bottom-left via composition',   cargo_e2e('align_bottom_left'));
+it('aligns the child view at bottom-center via composition', cargo_e2e('align_bottom_center'));
+it('aligns the child view at bottom-right via composition',  cargo_e2e('align_bottom_right'));

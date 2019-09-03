@@ -1,0 +1,133 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+    # Specify a command to be executed
+    # like `/bin/bash -l`, `ls`, or any other commands
+    # the default is bash for Linux
+    # or powershell.exe for Windows
+    command: ../target/debug/examples/dynamic
+    
+    # Specify the current working directory path
+    # the default is the current working directory path
+    cwd: null
+    
+    # Export additional ENV variables
+    env:
+      recording: true
+    
+    # Explicitly set the number of columns
+    # or use `auto` to take the current
+    # number of columns of your shell
+    cols: 80
+    
+    # Explicitly set the number of rows
+    # or use `auto` to take the current
+    # number of rows of your shell
+    rows: 24
+    
+    # Amount of times to repeat GIF
+    # If value is -1, play once
+    # If value is 0, loop indefinitely
+    # If value is a positive number, loop n times
+    repeat: 0
+    
+    # Quality
+    # 1 - 100
+    quality: 100
+    
+    # Delay between frames in ms
+    # If the value is `auto` use the actual recording delays
+    frameDelay: auto
+    
+    # Maximum delay between frames in ms
+    # Ignored if the `frameDelay` isn't set to `auto`
+    # Set to `auto` to prevent limiting the max idle time
+    maxIdleTime: 1000
+    
+    # The surrounding frame box
+    # The `type` can be null, window, floating, or solid`
+    # To hide the title use the value null
+    # Don't forget to add a backgroundColor style with a null as type
+    frameBox:
+      type: solid
+      title: null
+      style:
+        border: 0px black solid
+        # boxShadow: none
+        # margin: 0px
+    
+    # Add a watermark image to the rendered gif
+    # You need to specify an absolute path for
+    # the image on your machine or a URL, and you can also
+    # add your own CSS styles
+    watermark:
+      imagePath: null
+      style:
+        position: absolute
+        right: 15px
+        bottom: 15px
+        width: 100px
+        opacity: 0.9
+    
+    # Cursor style can be one of
+    # `block`, `underline`, or `bar`
+    cursorStyle: block
+    
+    # Font family
+    # You can use any font that is installed on your machine
+    # in CSS-like syntax
+    fontFamily: "Roboto Mono"
+    
+    # The size of the font
+    fontSize: 12
+    
+    # The height of lines
+    lineHeight: 1
+    
+    # The spacing between letters
+    letterSpacing: 0
+    
+    # Theme
+    theme:
+      background: "transparent"
+      foreground: "#afafaf"
+      cursor: "#c7c7c7"
+      black: "#232628"
+      red: "#fc4384"
+      green: "#b3e33b"
+      yellow: "#ffa727"
+      blue: "#003366"
+      magenta: "#ae89fe"
+      cyan: "#708387"
+      white: "#d5d5d0"
+      brightBlack: "#626566"
+      brightRed: "#ff7fac"
+      brightGreen: "#c8ed71"
+      brightYellow: "#ebdf86"
+      brightBlue: "#75dff2"
+      brightMagenta: "#ae89fe"
+      brightCyan: "#b1c6ca"
+      brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 396
+    content: "\e[?1049h\e[22;0;0t\e[1;24r\e(B\e[m\e[4l\e[?7h\e[?1h\e=\e[?1006;1000h\e[39;49m\e[?25l\e[?1002h\e[39;49m\e[34m\e[44m\e[H\e[2J\n\n\n\e[30m\e[47m\e[J\e[H┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[K\r\n│\e[18X\e[2;20H│\e[K\r\n└──────────────────┘\e[K\e[H\t\t\e[39;49m\e(B\e[m"
+  - delay: 1022
+    content: "\e[1;30H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[2;30H\e[1K │\e[2;50H│\e[3;30H\e[1K └──────────────────┘\e[1;47H\e[39;49m\e(B\e[m"
+  - delay: 998
+    content: "\e[1;60H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[2;60H\e[1K │\e[80G│\e[3;60H\e[1K └──────────────────┘\e[1;77H\e[39;49m\e(B\e[m"
+  - delay: 998
+    content: "\r\e[30m\e[47m\e[K\n\e[K\n\e[K\e[11d┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\r\n│\e[12;20H│\r\n└──────────────────┘\e[11;17H\e[39;49m\e(B\e[m"
+  - delay: 998
+    content: "\e[11;30H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[12;30H\e[1K │\e[12;50H│\e[13;30H\e[1K └──────────────────┘\e[11;47H\e[39;49m\e(B\e[m"
+  - delay: 998
+    content: "\e[11;60H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[12;60H\e[1K │\e[80G│\e[13;60H\e[1K └──────────────────┘\e[11;77H\e[39;49m\e(B\e[m"
+  - delay: 997
+    content: "\r\e[30m\e[47m\e[K\n\e[K\n\e[K\e[22d┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\r\n│\e[23;20H│\r\n└──────────────────┘\e[22;17H\e[39;49m\e(B\e[m"
+  - delay: 998
+    content: "\e[22;30H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[23;30H\e[1K │\e[23;50H│\e[24;30H\e[1K └──────────────────┘\e[22;47H\e[39;49m\e(B\e[m"
+  - delay: 1007
+    content: "\e[22;60H\e[30m\e[47m\e[1K ┌┤ \e[31m\e[47mHello, world!\e[30m\e[47m ├─┐\e[23;60H\e[1K │\e[80G│\e[24;60H\e[1K └──────────────────\e[?7l┘\e[?7h\e[22;77H\e[39;49m\e(B\e[m"
+  - delay: 987
+    content: "\e[?1002l\e[?1006;1000l\e[24;1H\e[?12l\e[?25h\e[?1049l\e[23;0;0t\r\e[?1l\e>"
