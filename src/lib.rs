@@ -267,61 +267,61 @@ impl<T: View> AlignedView<T> {
         Self::new(view, Align::new(HAlign::Right, VAlign::Bottom))
     }
 
-    // Set the alignment of this view to top-left.
+    /// Set the alignment of this view to top-left.
     pub fn set_top_left(&mut self) {
         self.alignment = Align::new(HAlign::Left, VAlign::Top);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to top-center.
+    /// Set the alignment of this view to top-center.
     pub fn set_top_center(&mut self) {
         self.alignment = Align::new(HAlign::Center, VAlign::Top);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to top-right.
+    /// Set the alignment of this view to top-right.
     pub fn set_top_right(&mut self) {
         self.alignment = Align::new(HAlign::Right, VAlign::Top);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to center-left.
+    /// Set the alignment of this view to center-left.
     pub fn set_center_left(&mut self) {
         self.alignment = Align::new(HAlign::Left, VAlign::Center);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to center.
+    /// Set the alignment of this view to center.
     pub fn set_center(&mut self) {
         self.alignment = Align::new(HAlign::Center, VAlign::Center);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to center-right.
+    /// Set the alignment of this view to center-right.
     pub fn set_center_right(&mut self) {
         self.alignment = Align::new(HAlign::Right, VAlign::Center);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to bottom-left.
+    /// Set the alignment of this view to bottom-left.
     pub fn set_bottom_left(&mut self) {
         self.alignment = Align::new(HAlign::Left, VAlign::Bottom);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to bottom-center.
+    /// Set the alignment of this view to bottom-center.
     pub fn set_bottom_center(&mut self) {
         self.alignment = Align::new(HAlign::Center, VAlign::Bottom);
         self.needs_relayout = true;
     }
 
-    // Set the alignment of this view to bottom-right.
+    /// Set the alignment of this view to bottom-right.
     pub fn set_bottom_right(&mut self) {
         self.alignment = Align::new(HAlign::Right, VAlign::Bottom);
         self.needs_relayout = true;
     }
 
-    // Get the current alignment of this view.
+    /// Get the current alignment of this view.
     pub fn alignment(&self) -> &Align {
         &self.alignment
     }
