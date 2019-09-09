@@ -17,3 +17,6 @@ cursive = "0.13.0"
 
 [dev-dependencies]
 serde_json = "1.0.40"
+
+[badges]
+travis-ci = { repository = "deinstapel/cursive-aligned-view"}
