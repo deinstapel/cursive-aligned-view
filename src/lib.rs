@@ -369,8 +369,8 @@ impl<T: View> View for AlignedView<T> {
         self.view.focus_view(sel)
     }
 
-    fn take_focus(&mut self, _source: Direction) -> bool {
-        false
+    fn take_focus(&mut self, source: Direction) -> bool {
+        self.view.take_focus(source)
     }
 
     fn important_area(&self, view_size: Vec2) -> Rect {
