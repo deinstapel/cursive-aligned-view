@@ -61,7 +61,7 @@ As an alternative you can use the `AlignedView` constructors directly:
 ```rust
 use cursive_aligned_view::AlignedView;
 
-let aligned = AlignedView::center(child_view);
+let aligned = AlignedView::with_center(child_view);
 ```
 
 Look into the [documentation](https://docs.rs/cursive-aligned-view) for a detailed explanation on the API.
