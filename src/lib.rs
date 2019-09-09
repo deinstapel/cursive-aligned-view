@@ -46,7 +46,7 @@
 //!     let panel = Panel::new(DummyView)
 //!         .title("Hello, world!")
 //!         .fixed_width(20);
-//!     let aligned = AlignedView::center(panel);
+//!     let aligned = AlignedView::with_center(panel);
 //!
 //!     siv.add_fullscreen_layer(aligned);
 //!     // siv.run()
@@ -101,47 +101,47 @@ use cursive::{Printer, Vec2, Rect};
 pub trait Alignable: View + Sized {
     /// Align a child view at the top-left of the parent.
     fn align_top_left(self) -> AlignedView<Self> {
-        AlignedView::top_left(self)
+        AlignedView::with_top_left(self)
     }
 
     /// Align a child view at the top-center of the parent.
     fn align_top_center(self) -> AlignedView<Self> {
-        AlignedView::top_center(self)
+        AlignedView::with_top_center(self)
     }
 
     /// Align a child view at the top-right of the parent.
     fn align_top_right(self) -> AlignedView<Self> {
-        AlignedView::top_right(self)
+        AlignedView::with_top_right(self)
     }
 
     /// Align a child view at the center-left of the parent.
     fn align_center_left(self) -> AlignedView<Self> {
-        AlignedView::center_left(self)
+        AlignedView::with_center_left(self)
     }
 
     /// Align a child view at the center of the parent.
     fn align_center(self) -> AlignedView<Self> {
-        AlignedView::center(self)
+        AlignedView::with_center(self)
     }
 
     /// Align a child view at the center-right of the parent.
     fn align_center_right(self) -> AlignedView<Self> {
-        AlignedView::center_right(self)
+        AlignedView::with_center_right(self)
     }
 
     /// Align a child view at the bottom-left of the parent.
     fn align_bottom_left(self) -> AlignedView<Self> {
-        AlignedView::bottom_left(self)
+        AlignedView::with_bottom_left(self)
     }
 
     /// Align a child view at the bottom-center of the parent.
     fn align_bottom_center(self) -> AlignedView<Self> {
-        AlignedView::bottom_center(self)
+        AlignedView::with_bottom_center(self)
     }
 
     /// Align a child view at the bottom-right of the parent.
     fn align_bottom_right(self) -> AlignedView<Self> {
-        AlignedView::bottom_right(self)
+        AlignedView::with_bottom_right(self)
     }
 }
 
@@ -197,7 +197,7 @@ impl<T: View> Alignable for T {}
 ///     let panel = Panel::new(DummyView)
 ///         .title("Hello, world!")
 ///         .fixed_width(20);
-///     let aligned = AlignedView::bottom_center(panel); // constructor
+///     let aligned = AlignedView::with_bottom_center(panel); // constructor
 ///
 ///     siv.add_fullscreen_layer(aligned);
 ///     // siv.run()
@@ -223,47 +223,47 @@ impl<T: View> AlignedView<T> {
     }
 
     /// Wrap a child view and align it at the top-left of the parent.
-    pub fn top_left(view: T) -> Self {
+    pub fn with_top_left(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Left, VAlign::Top))
     }
 
     /// Wrap a child view and align it at the top-center of the parent.
-    pub fn top_center(view: T) -> Self {
+    pub fn with_top_center(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Center, VAlign::Top))
     }
 
     /// Wrap a child view and align it at the top-right of the parent.
-    pub fn top_right(view: T) -> Self {
+    pub fn with_top_right(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Right, VAlign::Top))
     }
 
     /// Wrap a child view and align it at the center-left of the parent.
-    pub fn center_left(view: T) -> Self {
+    pub fn with_center_left(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Left, VAlign::Center))
     }
 
     /// Wrap a child view and align it at the center of the parent.
-    pub fn center(view: T) -> Self {
+    pub fn with_center(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Center, VAlign::Center))
     }
 
     /// Wrap a child view and align it at the center-right of the parent.
-    pub fn center_right(view: T) -> Self {
+    pub fn with_center_right(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Right, VAlign::Center))
     }
 
     /// Wrap a child view and align it at the bottom-left of the parent.
-    pub fn bottom_left(view: T) -> Self {
+    pub fn with_bottom_left(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Left, VAlign::Bottom))
     }
 
     /// Wrap a child view and align it at the bottom-center of the parent.
-    pub fn bottom_center(view: T) -> Self {
+    pub fn with_bottom_center(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Center, VAlign::Bottom))
     }
 
     /// Wrap a child view and align it at the bottom-right of the parent.
-    pub fn bottom_right(view: T) -> Self {
+    pub fn with_bottom_right(view: T) -> Self {
         Self::new(view, Align::new(HAlign::Right, VAlign::Bottom))
     }
 

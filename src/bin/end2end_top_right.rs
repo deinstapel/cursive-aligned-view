@@ -9,7 +9,7 @@ fn main() {
     let panel = Panel::new(DummyView)
         .title("Hello, world!")
         .fixed_width(20);
-    let aligned = AlignedView::top_right(panel);
+    let aligned = AlignedView::with_top_right(panel);
 
     siv.add_fullscreen_layer(aligned);
     siv.run()

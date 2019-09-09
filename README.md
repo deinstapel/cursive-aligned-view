@@ -116,13 +116,6 @@ to execute all available tests.
 
 [shields.io](https://shields.io) endpoints are generated inside the `./target/shields` folder. They are used in this README.
 
-### Public API naming
-
-The current public API of this crate is not consistent with [RFC 344](https://github.com/rust-lang/rfcs/pull/344). This is due to `cursive` itself not being
-consistent with `RFC 344`. This crate tries to implement a smooth user experience for cursive
-users. Therefore, the `cursive` naming convention was adapted. When `cursive` upstream converts
-their API to a `RFC 344` consistent naming scheme, this crate will adapt to the changes.
-
 ## Authors
 
 **Fin Christensen**
