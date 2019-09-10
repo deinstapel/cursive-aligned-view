@@ -358,7 +358,7 @@ impl<T: View> View for AlignedView<T> {
     }
 
     fn on_event(&mut self, ev: Event) -> EventResult {
-        self.view.on_event(ev)
+        self.view.on_event(ev.relativized(self.offset))
     }
 
     fn call_on_any<'a>(&mut self, sel: &Selector, cb: AnyCb<'a>) {
