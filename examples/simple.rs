@@ -1,7 +1,7 @@
+use cursive::view::Resizable as _;
+use cursive::views::{DummyView, Panel};
 use cursive::Cursive;
-use cursive::view::Boxable;
-use cursive::views::{Panel, DummyView};
-use cursive_aligned_view::Alignable;
+use cursive_aligned_view::Alignable as _;
 
 fn main() {
     let mut siv = Cursive::default();
