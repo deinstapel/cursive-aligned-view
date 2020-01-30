@@ -14,7 +14,8 @@ where
     let backend = Backend::init(Some(Vec2::new(80, 24)));
     let frames = backend.stream();
     let input = backend.input();
-    let mut siv = cursive::Cursive::new(|| backend);
+    let mut siv: cursive::Cursive;
+    siv = cursive::Cursive::new(|| backend);
     cb(&mut siv);
     input
         .send(Some(Event::Refresh))

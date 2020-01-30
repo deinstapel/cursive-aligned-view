@@ -17,8 +17,10 @@ cursive = { version = "0.14.0", default-features = false }
 
 [dev-dependencies]
 insta = "0.13.1"
-cursive = {git = "https://github.com/gyscos/cursive"}
 crossbeam = "0.7.3"
+
+[patch.crates-io]
+cursive = {git = "https://github.com/gyscos/cursive"}
 
 [badges]
 travis-ci = { repository = "deinstapel/cursive-aligned-view" }

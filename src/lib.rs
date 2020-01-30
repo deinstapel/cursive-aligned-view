@@ -16,17 +16,15 @@
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::Alignable;
 //!
-//! fn main() {
-//!     let mut siv = Cursive::default();
+//! let mut siv = Cursive::default();
 //!
-//!     let panel = Panel::new(DummyView)
-//!         .title("Hello, world!")
-//!         .fixed_width(20)
-//!         .align_center();
+//! let panel = Panel::new(DummyView)
+//!     .title("Hello, world!")
+//!     .fixed_width(20)
+//!     .align_center();
 //!
-//!     siv.add_fullscreen_layer(panel);
-//!     // siv.run()
-//! }
+//! siv.add_fullscreen_layer(panel);
+//! // siv.run()
 //! ```
 //!
 //! This is the preferred way as it is *chainable* and consistent with cursive's
@@ -40,17 +38,15 @@
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::AlignedView;
 //!
-//! fn main() {
-//!     let mut siv = Cursive::default();
+//! let mut siv = Cursive::default();
 //!
-//!     let panel = Panel::new(DummyView)
-//!         .title("Hello, world!")
-//!         .fixed_width(20);
-//!     let aligned = AlignedView::with_center(panel);
+//! let panel = Panel::new(DummyView)
+//!     .title("Hello, world!")
+//!     .fixed_width(20);
+//! let aligned = AlignedView::with_center(panel);
 //!
-//!     siv.add_fullscreen_layer(aligned);
-//!     // siv.run()
-//! }
+//! siv.add_fullscreen_layer(aligned);
+//! // siv.run()
 //! ```
 //!
 //! ## Supported Alignments
@@ -67,11 +63,11 @@
 //! | bottom center | `align_bottom_center` |
 //! | bottom right  | `align_bottom_right`  |
 
-use cursive::view::{View, Selector};
-use cursive::event::{AnyCb, Event, EventResult};
-use cursive::direction::Direction;
 use cursive::align::{Align, HAlign, VAlign};
-use cursive::{Printer, Vec2, Rect};
+use cursive::direction::Direction;
+use cursive::event::{AnyCb, Event, EventResult};
+use cursive::view::{Selector, View};
+use cursive::{Printer, Rect, Vec2};
 
 /// Use this trait to extend all `cursive::view::View` instances to support
 /// the `align_...` methods.
@@ -86,17 +82,15 @@ use cursive::{Printer, Vec2, Rect};
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
 ///
-/// fn main() {
-///     let mut siv = Cursive::default();
+/// let mut siv = Cursive::default();
 ///
-///     let panel = Panel::new(DummyView)
-///         .title("Hello, world!")
-///         .fixed_width(20)
-///         .align_top_center(); // constructing `AlignedView`
+/// let panel = Panel::new(DummyView)
+///     .title("Hello, world!")
+///     .fixed_width(20)
+///     .align_top_center(); // constructing `AlignedView`
 ///
-///     siv.add_fullscreen_layer(panel);
-///     // siv.run()
-/// }
+/// siv.add_fullscreen_layer(panel);
+/// // siv.run()
 /// ```
 pub trait Alignable: View + Sized {
     /// Align a child view at the top-left of the parent.
@@ -170,17 +164,15 @@ impl<T: View> Alignable for T {}
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
 ///
-/// fn main() {
-///     let mut siv = Cursive::default();
+/// let mut siv = Cursive::default();
 ///
-///     let panel = Panel::new(DummyView)
-///         .title("Hello, world!")
-///         .fixed_width(20)
-///         .align_top_center(); // `align_...` methods from `Alignable`
+/// let panel = Panel::new(DummyView)
+///     .title("Hello, world!")
+///     .fixed_width(20)
+///     .align_top_center(); // `align_...` methods from `Alignable`
 ///
-///     siv.add_fullscreen_layer(panel);
-///     // siv.run()
-/// }
+/// siv.add_fullscreen_layer(panel);
+/// // siv.run()
 /// ```
 ///
 /// ## Constructors
@@ -191,17 +183,15 @@ impl<T: View> Alignable for T {}
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::AlignedView;
 ///
-/// fn main() {
-///     let mut siv = Cursive::default();
+/// let mut siv = Cursive::default();
 ///
-///     let panel = Panel::new(DummyView)
-///         .title("Hello, world!")
-///         .fixed_width(20);
-///     let aligned = AlignedView::with_bottom_center(panel); // constructor
+/// let panel = Panel::new(DummyView)
+///     .title("Hello, world!")
+///     .fixed_width(20);
+/// let aligned = AlignedView::with_bottom_center(panel); // constructor
 ///
-///     siv.add_fullscreen_layer(aligned);
-///     // siv.run()
-/// }
+/// siv.add_fullscreen_layer(aligned);
+/// // siv.run()
 /// ```
 pub struct AlignedView<T> {
     view: T,
