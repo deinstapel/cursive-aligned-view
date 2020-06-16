@@ -1,6 +1,6 @@
 use cursive::view::{Nameable, Resizable};
 use cursive::views::{DummyView, Panel, ResizedView};
-use cursive::Cursive;
+use cursive::{Cursive, CursiveExt};
 use cursive_aligned_view::{Alignable, AlignedView};
 
 use std::time::Duration;

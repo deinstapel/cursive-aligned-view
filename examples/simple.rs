@@ -1,6 +1,6 @@
 use cursive::view::Resizable as _;
 use cursive::views::{DummyView, Panel};
-use cursive::Cursive;
+use cursive::{Cursive, CursiveExt};
 use cursive_aligned_view::Alignable as _;
 
 fn main() {

@@ -1,4 +1,4 @@
-use cursive::Cursive;
+use cursive::{Cursive, CursiveExt};
 use cursive::view::Boxable;
 use cursive::views::{Panel, DummyView};
 use cursive_aligned_view::AlignedView;

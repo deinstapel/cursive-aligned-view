@@ -11,7 +11,7 @@
 //! The easiest way to align a view is via the `Alignable` trait:
 //!
 //! ```rust
-//! use cursive::Cursive;
+//! use cursive::{Cursive, CursiveExt};
 //! use cursive::view::Boxable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::Alignable;
@@ -35,7 +35,7 @@
 //! As an alternative you can use the `AlignedView` constructors directly:
 //!
 //! ```rust
-//! use cursive::Cursive;
+//! use cursive::{Cursive, CursiveExt};
 //! use cursive::view::Boxable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::AlignedView;
@@ -81,7 +81,7 @@ use cursive::{Printer, Vec2, Rect};
 /// # Usage Example
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
@@ -165,7 +165,7 @@ impl<T: View> Alignable for T {}
 /// ## Using Alignable
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
@@ -186,7 +186,7 @@ impl<T: View> Alignable for T {}
 /// ## Constructors
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::AlignedView;
