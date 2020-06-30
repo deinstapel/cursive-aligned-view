@@ -67,11 +67,11 @@
 //! | bottom center | `align_bottom_center` |
 //! | bottom right  | `align_bottom_right`  |
 
-use cursive::view::{View, Selector};
-use cursive::event::{AnyCb, Event, EventResult};
-use cursive::direction::Direction;
-use cursive::align::{Align, HAlign, VAlign};
-use cursive::{Printer, Vec2, Rect};
+use cursive_core::align::{Align, HAlign, VAlign};
+use cursive_core::direction::Direction;
+use cursive_core::event::{AnyCb, Event, EventResult};
+use cursive_core::view::{Selector, View};
+use cursive_core::{Printer, Rect, Vec2};
 
 /// Use this trait to extend all `cursive::view::View` instances to support
 /// the `align_...` methods.
