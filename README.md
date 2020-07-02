@@ -87,23 +87,18 @@ Look into the [documentation](https://docs.rs/cursive-aligned-view) for a detail
 
 If you find any bugs/unexpected behaviour or you have a proposition for future changes open an issue describing the current behaviour and what you expected.
 
-## Development [![cargo test](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fdeinstapel.github.io%2Fcursive-aligned-view%2Fcargo-test.json)](https://travis-ci.org/deinstapel/cursive-aligned-view) [![shellshot](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fdeinstapel.github.io%2Fcursive-aligned-view%2Fshellshot.json)](https://github.com/fin-ger/shellshot)
+## Development [![cargo test](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fdeinstapel.github.io%2Fcursive-aligned-view%2Fcargo-test.json)](https://travis-ci.org/deinstapel/cursive-aligned-view)
 
 ### Running the tests
 
-> :bangbang: **CAUTION** :bangbang: This crate uses Tmux for end2end testing and will **kill your Tmux server** during testing!
-
 #### Preparing integration tests
 
-In order to run the integration tests, you first need to install a recent version of `>=npm-10` and `>=tmux-2.6`!
-
-After `npm` and `tmux` are installed, install required dependencies:
-
+To perform the test it's advisable to install [`cargo-insta`](https://github.com/mitsuhiko/insta) in case your tests fail and you want to inspect the received output.
 ```
-$ ./scripts/prepare-end2end-tests.sh
+$ cargo install cargo-insta
 ```
 
-This will use `npm` to install `jest` and `shellshot` in the `tests` folder.
+You will also need insta to validate new tests you add or update older ones.
 
 #### Running all test suites
 
@@ -114,6 +109,13 @@ $ cargo test
 ```
 
 to execute all available tests.
+
+---
+
+Or if you want to interactively inspect failed tests
+```
+$ cargo insta test
+```
 
 #### shields.io endpoints
 
