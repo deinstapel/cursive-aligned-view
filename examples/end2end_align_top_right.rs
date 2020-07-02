@@ -1,16 +1,16 @@
-use cursive::Cursive;
+use cursive::{Cursive, CursiveExt};
 use cursive::view::Boxable;
 use cursive::views::{Panel, DummyView};
-use cursive_aligned_view::AlignedView;
+use cursive_aligned_view::Alignable;
 
 fn main() {
     let mut siv = Cursive::default();
 
     let panel = Panel::new(DummyView)
         .title("Hello, world!")
-        .fixed_width(20);
-    let aligned = AlignedView::with_top_left(panel);
+        .fixed_width(20)
+        .align_top_right();
 
-    siv.add_fullscreen_layer(aligned);
+    siv.add_fullscreen_layer(panel);
     siv.run()
 }

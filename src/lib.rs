@@ -11,7 +11,7 @@
 //! The easiest way to align a view is via the `Alignable` trait:
 //!
 //! ```rust
-//! use cursive::Cursive;
+//! use cursive::{Cursive, CursiveExt};
 //! use cursive::view::Boxable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::Alignable;
@@ -35,7 +35,7 @@
 //! As an alternative you can use the `AlignedView` constructors directly:
 //!
 //! ```rust
-//! use cursive::Cursive;
+//! use cursive::{Cursive, CursiveExt};
 //! use cursive::view::Boxable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::AlignedView;
@@ -67,11 +67,11 @@
 //! | bottom center | `align_bottom_center` |
 //! | bottom right  | `align_bottom_right`  |
 
-use cursive::view::{View, Selector};
-use cursive::event::{AnyCb, Event, EventResult};
-use cursive::direction::Direction;
-use cursive::align::{Align, HAlign, VAlign};
-use cursive::{Printer, Vec2, Rect};
+use cursive_core::align::{Align, HAlign, VAlign};
+use cursive_core::direction::Direction;
+use cursive_core::event::{AnyCb, Event, EventResult};
+use cursive_core::view::{Selector, View};
+use cursive_core::{Printer, Rect, Vec2};
 
 /// Use this trait to extend all `cursive::view::View` instances to support
 /// the `align_...` methods.
@@ -81,7 +81,7 @@ use cursive::{Printer, Vec2, Rect};
 /// # Usage Example
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
@@ -165,7 +165,7 @@ impl<T: View> Alignable for T {}
 /// ## Using Alignable
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
@@ -186,7 +186,7 @@ impl<T: View> Alignable for T {}
 /// ## Constructors
 ///
 /// ```rust
-/// use cursive::Cursive;
+/// use cursive::{Cursive, CursiveExt};
 /// use cursive::view::Boxable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::AlignedView;
