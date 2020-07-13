@@ -212,7 +212,7 @@ pub struct AlignedView<T> {
 }
 
 impl<T: View> AlignedView<T> {
-    fn new(view: T, alignment: Align) -> Self {
+    pub fn new(view: T, alignment: Align) -> Self {
         Self {
             view,
             alignment,
