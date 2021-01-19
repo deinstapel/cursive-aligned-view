@@ -70,7 +70,7 @@
 use cursive_core::align::{Align, HAlign, VAlign};
 use cursive_core::direction::Direction;
 use cursive_core::event::{AnyCb, Event, EventResult};
-use cursive_core::view::{Selector, View};
+use cursive_core::view::{Selector, View, ViewNotFound};
 use cursive_core::{Printer, Rect, Vec2};
 
 /// Use this trait to extend all `cursive::view::View` instances to support
@@ -365,7 +365,7 @@ impl<T: View> View for AlignedView<T> {
         self.view.call_on_any(sel, cb);
     }
 
-    fn focus_view(&mut self, sel: &Selector) -> Result<(), ()> {
+    fn focus_view(&mut self, sel: &Selector) -> Result<(), ViewNotFound> {
         self.view.focus_view(sel)
     }
 
