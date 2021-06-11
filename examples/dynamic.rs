@@ -14,7 +14,11 @@ fn main() {
         .title("Hello, world!")
         .fixed_width(20)
         .align_top_left()
-        .with_name("panel");
+        .with_name("panel")
+        .resized(
+            cursive::view::SizeConstraint::Full,
+            cursive::view::SizeConstraint::Full,
+        );
 
     let sink = siv.cb_sink().clone();
     std::thread::spawn(move || {
@@ -89,6 +93,6 @@ fn main() {
         .expect("alignment change failed");
     });
 
-    siv.add_fullscreen_layer(panel);
+    siv.add_layer(panel);
     siv.run()
 }

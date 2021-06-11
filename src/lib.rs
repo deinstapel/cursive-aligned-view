@@ -354,7 +354,7 @@ impl<T: View> View for AlignedView<T> {
     fn required_size(&mut self, constraint: Vec2) -> Vec2 {
         self.last_size = self.view.required_size(constraint);
 
-        constraint
+        self.last_size
     }
 
     fn on_event(&mut self, ev: Event) -> EventResult {

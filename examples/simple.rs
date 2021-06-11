@@ -9,8 +9,12 @@ fn main() {
     let panel = Panel::new(DummyView)
         .title("Hello, world!")
         .fixed_width(20)
-        .align_center();
+        .align_center()
+        .resized(
+            cursive::view::SizeConstraint::Full,
+            cursive::view::SizeConstraint::Full,
+        );
 
-    siv.add_fullscreen_layer(panel);
+    siv.add_layer(panel);
     siv.run()
 }
