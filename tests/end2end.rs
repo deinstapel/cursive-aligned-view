@@ -1,10 +1,11 @@
 use crossbeam::channel::{Receiver, Sender};
 use cursive::backends::puppet::{observed::ObservedScreen, Backend};
 use cursive::event::Event;
-use cursive::view::Boxable;
-use cursive::views::{DummyView, Panel};
+use cursive::view::{Boxable, SizeConstraint, Resizable};
+use cursive::views::{DummyView, Panel, TextView};
 use cursive::Vec2;
 use cursive_aligned_view::{Alignable, AlignedView};
+use cursive_core::align::{Align, HAlign, VAlign};
 use insta::assert_display_snapshot;
 
 fn setup_test_environment<F>(cb: F) -> (Receiver<ObservedScreen>, Sender<Option<Event>>)
@@ -24,10 +25,30 @@ where
 }
 
 #[test]
-fn end2end_top_left() {
+fn squeeze_underfill() {
+    let (frames, _) = setup_test_environment(|siv| {
+        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
+        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        siv.add_fullscreen_layer(aligned);
+    });
+    assert_display_snapshot!(frames.try_iter().last().unwrap());
+}
+
+#[test]
+fn exact_match_fill() {
+    let (frames, _) = setup_test_environment(|siv| {
+        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
+        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Fixed(60), SizeConstraint::Fixed(3));
+        siv.add_fullscreen_layer(aligned);
+    });
+    assert_display_snapshot!(frames.try_iter().last().unwrap());
+}
+
+#[test]
+fn top_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_left(panel);
+        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -36,7 +57,7 @@ fn end2end_top_left() {
 fn top_center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_center(panel);
+        let aligned = AlignedView::with_top_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -45,7 +66,7 @@ fn top_center() {
 fn top_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_right(panel);
+        let aligned = AlignedView::with_top_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -54,7 +75,7 @@ fn top_right() {
 fn center_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center_left(panel);
+        let aligned = AlignedView::with_center_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -63,7 +84,7 @@ fn center_left() {
 fn center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center(panel);
+        let aligned = AlignedView::with_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -72,7 +93,7 @@ fn center() {
 fn center_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center_right(panel);
+        let aligned = AlignedView::with_center_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -81,7 +102,7 @@ fn center_right() {
 fn bottom_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_left(panel);
+        let aligned = AlignedView::with_bottom_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -90,7 +111,7 @@ fn bottom_left() {
 fn bottom_center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_center(panel);
+        let aligned = AlignedView::with_bottom_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -99,107 +120,71 @@ fn bottom_center() {
 fn bottom_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_right(panel);
+        let aligned = AlignedView::with_bottom_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
 }
 #[test]
 fn align_top_left() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_top_left();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_top_left();
+    assert_eq!(*panel.alignment(), Align::top_left())
 }
 #[test]
 fn align_top_center() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_top_center();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_top_center();
+    assert_eq!(*panel.alignment(), Align::top_center())
 }
 #[test]
 fn align_top_right() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_top_right();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_top_right();
+    assert_eq!(*panel.alignment(), Align::top_right())
 }
 #[test]
 fn align_center_left() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_center_left();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_center_left();
+    assert_eq!(*panel.alignment(), Align::center_left())
 }
 #[test]
 fn align_center() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_center();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_center();
+    assert_eq!(*panel.alignment(), Align::center())
 }
 #[test]
 fn align_center_right() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_center_right();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_center_right();
+    assert_eq!(*panel.alignment(), Align::center_right())
 }
 #[test]
 fn align_bottom_left() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_bottom_left();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_bottom_left();
+    assert_eq!(*panel.alignment(), Align::bot_left());
 }
 #[test]
 fn align_bottom_center() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_bottom_center();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_bottom_center();
+    assert_eq!(*panel.alignment(), Align::bot_center());
 }
 #[test]
 fn align_bottom_right() {
-    let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(DummyView)
-            .title("Hello, world!")
-            .fixed_width(20)
-            .align_bottom_right();
-        siv.add_fullscreen_layer(panel);
-    });
-    assert_display_snapshot!(frames.try_iter().last().unwrap());
+    let panel = Panel::new(DummyView)
+        .title("Hello, world!")
+        .align_bottom_right();
+    assert_eq!(*panel.alignment(), Align::new(HAlign::Right, VAlign::Bottom));
 }
