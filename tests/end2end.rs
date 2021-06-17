@@ -1,7 +1,7 @@
 use crossbeam::channel::{Receiver, Sender};
 use cursive::backends::puppet::{observed::ObservedScreen, Backend};
 use cursive::event::Event;
-use cursive::view::{Boxable, SizeConstraint, Resizable};
+use cursive::view::{Boxable, SizeConstraint};
 use cursive::views::{DummyView, Panel, TextView};
 use cursive::Vec2;
 use cursive_aligned_view::{Alignable, AlignedView};
