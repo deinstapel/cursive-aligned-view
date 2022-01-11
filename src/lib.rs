@@ -68,9 +68,8 @@
 //! | bottom right  | `align_bottom_right`  |
 
 use cursive_core::align::{Align, HAlign, VAlign};
-use cursive_core::direction::Direction;
-use cursive_core::event::{AnyCb, Event, EventResult};
-use cursive_core::view::{Selector, View, ViewNotFound};
+use cursive_core::event::{Event, EventResult};
+use cursive_core::view::{View, ViewWrapper};
 use cursive_core::{Printer, Rect, Vec2};
 
 /// Use this trait to extend all `cursive::view::View` instances to support
@@ -327,13 +326,15 @@ impl<T: View> AlignedView<T> {
     }
 }
 
-impl<T: View> View for AlignedView<T> {
-    fn draw(&self, printer: &Printer) {
+impl<T: View> ViewWrapper for AlignedView<T> {
+    cursive_core::wrap_impl!(self.view: T);
+
+    fn wrap_draw(&self, printer: &Printer) {
         let offset_printer = printer.offset(self.offset).cropped(self.last_size);
         self.view.draw(&offset_printer);
     }
 
-    fn layout(&mut self, size: Vec2) {
+    fn wrap_layout(&mut self, size: Vec2) {
         self.offset = Vec2::new(
             self.alignment.h.get_offset(self.last_size.x, size.x),
             self.alignment.v.get_offset(self.last_size.y, size.y),
@@ -347,33 +348,21 @@ impl<T: View> View for AlignedView<T> {
         self.needs_relayout = false;
     }
 
-    fn needs_relayout(&self) -> bool {
+    fn wrap_needs_relayout(&self) -> bool {
         self.needs_relayout || self.view.needs_relayout()
     }
 
-    fn required_size(&mut self, constraint: Vec2) -> Vec2 {
+    fn wrap_required_size(&mut self, constraint: Vec2) -> Vec2 {
         self.last_size = self.view.required_size(constraint);
 
         self.last_size
     }
 
-    fn on_event(&mut self, ev: Event) -> EventResult {
+    fn wrap_on_event(&mut self, ev: Event) -> EventResult {
         self.view.on_event(ev.relativized(self.offset))
     }
 
-    fn call_on_any<'a>(&mut self, sel: &Selector, cb: AnyCb<'a>) {
-        self.view.call_on_any(sel, cb);
-    }
-
-    fn focus_view(&mut self, sel: &Selector) -> Result<(), ViewNotFound> {
-        self.view.focus_view(sel)
-    }
-
-    fn take_focus(&mut self, source: Direction) -> bool {
-        self.view.take_focus(source)
-    }
-
-    fn important_area(&self, view_size: Vec2) -> Rect {
-        self.view.important_area(view_size)
+    fn wrap_important_area(&self, _: Vec2) -> Rect {
+        self.view.important_area(self.last_size) + self.offset
     }
 }
