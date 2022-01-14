@@ -12,7 +12,7 @@
 //!
 //! ```rust
 //! use cursive::{Cursive, CursiveExt};
-//! use cursive::view::Boxable;
+//! use cursive::view::Resizable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::Alignable;
 //!
@@ -30,13 +30,13 @@
 //! ```
 //!
 //! This is the preferred way as it is *chainable* and consistent with cursive's
-//! `Boxable` and `Identifiable` traits.
+//! `Resizable` and `Identifiable` traits.
 //!
 //! As an alternative you can use the `AlignedView` constructors directly:
 //!
 //! ```rust
 //! use cursive::{Cursive, CursiveExt};
-//! use cursive::view::Boxable;
+//! use cursive::view::Resizable;
 //! use cursive::views::{Panel, DummyView};
 //! use cursive_aligned_view::AlignedView;
 //!
@@ -81,7 +81,7 @@ use cursive_core::{Printer, Rect, Vec2};
 ///
 /// ```rust
 /// use cursive::{Cursive, CursiveExt};
-/// use cursive::view::Boxable;
+/// use cursive::view::Resizable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
 ///
@@ -165,7 +165,7 @@ impl<T: View> Alignable for T {}
 ///
 /// ```rust
 /// use cursive::{Cursive, CursiveExt};
-/// use cursive::view::Boxable;
+/// use cursive::view::Resizable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::Alignable;
 ///
@@ -186,7 +186,7 @@ impl<T: View> Alignable for T {}
 ///
 /// ```rust
 /// use cursive::{Cursive, CursiveExt};
-/// use cursive::view::Boxable;
+/// use cursive::view::Resizable;
 /// use cursive::views::{Panel, DummyView};
 /// use cursive_aligned_view::AlignedView;
 ///
