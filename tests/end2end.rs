@@ -1,7 +1,7 @@
 use crossbeam::channel::{Receiver, Sender};
 use cursive::backends::puppet::{observed::ObservedScreen, Backend};
 use cursive::event::Event;
-use cursive::view::{Boxable, SizeConstraint};
+use cursive::view::{Resizable, SizeConstraint};
 use cursive::views::{DummyView, Panel, TextView};
 use cursive::Vec2;
 use cursive_aligned_view::{Alignable, AlignedView};
@@ -27,8 +27,12 @@ where
 #[test]
 fn squeeze_underfill_top_left() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_top_left(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -37,8 +41,12 @@ fn squeeze_underfill_top_left() {
 #[test]
 fn squeeze_underfill_top_center() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_top_center(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_top_center(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -47,8 +55,12 @@ fn squeeze_underfill_top_center() {
 #[test]
 fn squeeze_underfill_top_right() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_top_right(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_top_right(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -57,8 +69,12 @@ fn squeeze_underfill_top_right() {
 #[test]
 fn squeeze_underfill_center_left() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_center_left(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_center_left(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -67,8 +83,12 @@ fn squeeze_underfill_center_left() {
 #[test]
 fn squeeze_underfill_center() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_center(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_center(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -77,8 +97,12 @@ fn squeeze_underfill_center() {
 #[test]
 fn squeeze_underfill_center_right() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_center_right(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_center_right(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -87,8 +111,12 @@ fn squeeze_underfill_center_right() {
 #[test]
 fn squeeze_underfill_bottom_left() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_bottom_left(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_bottom_left(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -97,8 +125,12 @@ fn squeeze_underfill_bottom_left() {
 #[test]
 fn squeeze_underfill_bottom_center() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_bottom_center(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_bottom_center(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -107,8 +139,12 @@ fn squeeze_underfill_bottom_center() {
 #[test]
 fn squeeze_underfill_bottom_right() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_bottom_right(panel).resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_bottom_right(panel)
+            .resized(SizeConstraint::Fixed(15), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -117,8 +153,12 @@ fn squeeze_underfill_bottom_right() {
 #[test]
 fn exact_match_fill() {
     let (frames, _) = setup_test_environment(|siv| {
-        let panel = Panel::new(TextView::new("A very long text that will reach the limit of some screens")).title("Hello, world!");
-        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Fixed(60), SizeConstraint::Fixed(3));
+        let panel = Panel::new(TextView::new(
+            "A very long text that will reach the limit of some screens",
+        ))
+        .title("Hello, world!");
+        let aligned = AlignedView::with_top_left(panel)
+            .resized(SizeConstraint::Fixed(60), SizeConstraint::Fixed(3));
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -128,7 +168,8 @@ fn exact_match_fill() {
 fn top_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned =
+            AlignedView::with_top_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -137,7 +178,8 @@ fn top_left() {
 fn top_center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned =
+            AlignedView::with_top_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -146,7 +188,8 @@ fn top_center() {
 fn top_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_top_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned =
+            AlignedView::with_top_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -155,7 +198,8 @@ fn top_right() {
 fn center_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned = AlignedView::with_center_left(panel)
+            .resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -164,7 +208,8 @@ fn center_left() {
 fn center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned =
+            AlignedView::with_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -173,7 +218,8 @@ fn center() {
 fn center_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_center_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned = AlignedView::with_center_right(panel)
+            .resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -182,7 +228,8 @@ fn center_right() {
 fn bottom_left() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_left(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned = AlignedView::with_bottom_left(panel)
+            .resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -191,7 +238,8 @@ fn bottom_left() {
 fn bottom_center() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_center(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned = AlignedView::with_bottom_center(panel)
+            .resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -200,7 +248,8 @@ fn bottom_center() {
 fn bottom_right() {
     let (frames, _) = setup_test_environment(|siv| {
         let panel = Panel::new(DummyView).title("Hello, world!").fixed_width(20);
-        let aligned = AlignedView::with_bottom_right(panel).resized(SizeConstraint::Full, SizeConstraint::Full);
+        let aligned = AlignedView::with_bottom_right(panel)
+            .resized(SizeConstraint::Full, SizeConstraint::Full);
         siv.add_fullscreen_layer(aligned);
     });
     assert_display_snapshot!(frames.try_iter().last().unwrap());
@@ -235,9 +284,7 @@ fn align_center_left() {
 }
 #[test]
 fn align_center() {
-    let panel = Panel::new(DummyView)
-        .title("Hello, world!")
-        .align_center();
+    let panel = Panel::new(DummyView).title("Hello, world!").align_center();
     assert_eq!(*panel.alignment(), Align::center())
 }
 #[test]
@@ -266,5 +313,8 @@ fn align_bottom_right() {
     let panel = Panel::new(DummyView)
         .title("Hello, world!")
         .align_bottom_right();
-    assert_eq!(*panel.alignment(), Align::new(HAlign::Right, VAlign::Bottom));
+    assert_eq!(
+        *panel.alignment(),
+        Align::new(HAlign::Right, VAlign::Bottom)
+    );
 }

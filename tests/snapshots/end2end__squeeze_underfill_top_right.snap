@@ -1,11 +1,11 @@
 ---
 source: tests/end2end.rs
+assertion_line: 66
 expression: frames.try_iter().last().unwrap()
-
 ---
 captured piece:
 x01234567890123456789012345678901234567890123456789012345678901234567890123456789x
-0┌─────────────┐                                                                 |
+0┌┤ Hello, wo ├┐                                                                 |
 1│A very long  │                                                                 |
 2└─────────────┘                                                                 |
 3                                                                                |
