@@ -15,10 +15,7 @@ fn main() {
         .fixed_width(20)
         .align_top_left()
         .with_name("panel")
-        .resized(
-            cursive::view::SizeConstraint::Full,
-            cursive::view::SizeConstraint::Full,
-        );
+        .full_screen();
 
     let sink = siv.cb_sink().clone();
     std::thread::spawn(move || {
