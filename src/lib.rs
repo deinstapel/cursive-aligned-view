@@ -366,3 +366,50 @@ impl<T: View> ViewWrapper for AlignedView<T> {
         self.view.important_area(self.last_size) + self.offset
     }
 }
+
+#[cursive_core::blueprint(AlignedView::new(view, alignment))]
+struct Blueprint {
+    view: cursive_core::views::BoxedView,
+    alignment: Align,
+}
+
+cursive_core::manual_blueprint!(with align, |config, context| {
+    let alignment = context.resolve(config)?;
+    Ok(move |view| AlignedView::new(view, alignment))
+});
+
+cursive_core::manual_blueprint!(with align_top_left, |_config, _context| {
+    Ok(|view| AlignedView::with_top_left(view))
+});
+
+cursive_core::manual_blueprint!(with align_top_center, |_config, _context| {
+    Ok(|view| AlignedView::with_top_center(view))
+});
+
+cursive_core::manual_blueprint!(with align_top_right, |_config, _context| {
+    Ok(|view| AlignedView::with_top_right(view))
+});
+
+cursive_core::manual_blueprint!(with align_center_left, |_config, _context| {
+    Ok(|view| AlignedView::with_center_left(view))
+});
+
+cursive_core::manual_blueprint!(with align_center, |_config, _context| {
+    Ok(|view| AlignedView::with_center(view))
+});
+
+cursive_core::manual_blueprint!(with align_center_right, |_config, _context| {
+    Ok(|view| AlignedView::with_center_right(view))
+});
+
+cursive_core::manual_blueprint!(with align_bottom_left, |_config, _context| {
+    Ok(|view| AlignedView::with_bottom_left(view))
+});
+
+cursive_core::manual_blueprint!(with align_bottom_center, |_config, _context| {
+    Ok(|view| AlignedView::with_bottom_center(view))
+});
+
+cursive_core::manual_blueprint!(with align_bottom_right, |_config, _context| {
+    Ok(|view| AlignedView::with_bottom_right(view))
+});

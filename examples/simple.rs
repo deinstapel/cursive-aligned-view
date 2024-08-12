@@ -10,10 +10,7 @@ fn main() {
         .title("Hello, world!")
         .fixed_width(20)
         .align_center()
-        .resized(
-            cursive::view::SizeConstraint::Full,
-            cursive::view::SizeConstraint::Full,
-        );
+        .full_screen();
 
     siv.add_layer(panel);
     siv.run()
